@@ -115,7 +115,7 @@ form {
 }
 
 input {
-  flex: 1; /* Input takes available space */
+  flex: 1; 
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
