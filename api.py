@@ -11,11 +11,10 @@ import requests
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # Add this line to enable CORS
+CORS(app) 
 
-API_KEY = "AIzaSyBBe7ywT7emE1MOC_fg5NUClAk4Y6jvTmo"  # Your Gemini API key
+API_KEY = "AIzaSyBBe7ywT7emE1MOC_fg5NUClAk4Y6jvTmo" 
 
-# Mock database to store chat data
 mock_db = {}
 
 @app.route('/save_chat', methods=['POST'])
@@ -38,12 +37,12 @@ def save_chat():
 
 @app.route('/get_chats/<chat_id>', methods=['GET'])
 def get_chats(chat_id):
-    # Retrieve chats from mock database
+    
     chats = mock_db.get(chat_id, [])
     return jsonify(chats), 200
 
 
-# Function to download audio from YouTube video
+
 def download_audio_from_youtube(url):
     ydl_opts = {
         'format': 'bestaudio/best',
@@ -58,24 +57,23 @@ def download_audio_from_youtube(url):
         ydl.download([url])
     return 'video.mp3'
 
-# Function to split audio into in-memory chunks
+
 def split_audio_in_memory(file_path, chunk_length_ms=180000):
     audio = AudioSegment.from_file(file_path)
     chunks = [audio[i:i + chunk_length_ms] for i in range(0, len(audio), chunk_length_ms)]
     return chunks
 
-# Function to transcribe audio chunks with Whisper
+
 def transcribe_chunks(chunks, model):
     transcriptions = []
     for chunk in chunks:
-        temp_filename = f"temp_chunk_{uuid.uuid4()}.mp3"  # Generate a unique filename
-        chunk.export(temp_filename, format="mp3")  # Save the chunk to the temp file
-        result = model.transcribe(temp_filename)  # Transcribe the audio from the temp file
+        temp_filename = f"temp_chunk_{uuid.uuid4()}.mp3" 
+        chunk.export(temp_filename, format="mp3")  
+        result = model.transcribe(temp_filename)  
         transcriptions.append(result["text"])
-        os.remove(temp_filename)  # Clean up the temporary file
+        os.remove(temp_filename)  
     return " ".join(transcriptions)
 
-# Function to summarize text using the Gemini API
 def summarize_text(text):
     url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={API_KEY}'
     headers = {'Content-Type': 'application/json'}
@@ -109,20 +107,20 @@ def generate_summary():
     if not video_url:
         return jsonify({"error": "No URL provided."}), 400
 
-    # Download audio from YouTube
+
     audio_path = download_audio_from_youtube(video_url)
 
-    # Split the audio into chunks
+
     chunks = split_audio_in_memory(audio_path)
 
-    # Transcribe all chunks
+
     model = whisper.load_model("small")
     transcribed_text = transcribe_chunks(chunks, model)
 
-    # Generate summary using Gemini API
+
     summary = summarize_text(transcribed_text)
 
-    # Clean up downloaded audio file
+
     os.remove(audio_path)
 
     return jsonify({"summary": summary})
@@ -137,7 +135,7 @@ def chat_with_summary():
     if not question or not summary:
         return jsonify({"error": "Question or summary not provided."}), 400
 
-    # Correct URL for the PaLM API
+
     url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={API_KEY}'
     
     headers = {'Content-Type': 'application/json'}
@@ -156,17 +154,17 @@ def chat_with_summary():
     try:
         response = requests.post(url, headers=headers, json=request_data)
 
-        # Print the entire response for debugging
+
         print("Response Status Code:", response.status_code)
         print("Response Content:", response.text)
 
-        # Check the response
+
         if response.status_code == 200:
             json_response = response.json()
-            # Print the json response for debugging
+
             print("JSON Response:", json_response)
 
-            # Correctly extract the text from the response
+
             answer = json_response.get('candidates', [{}])[0].get('content', {}).get('parts', [{}])[0].get('text', '')
             if not answer:
                 return jsonify({"error": "No answer returned from the AI."}), 500
