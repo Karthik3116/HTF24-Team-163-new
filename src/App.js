@@ -136,7 +136,7 @@ function App() {
     <Router>
       <div className="App">
         <header className="App-header">
-          <h1>AskTube: Video Chat Summary</h1>
+          <h1>Effortless Understanding: AskTube's Intelligent Video Summarization Tool</h1>
           <form onSubmit={handleSubmit}>
             <input
               type="text"

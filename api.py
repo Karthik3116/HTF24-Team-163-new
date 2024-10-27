@@ -144,10 +144,24 @@ def chat_with_summary():
         "contents": [{
             "parts": [{
                 "text": (
-                    f"Summary: {summary}. User question: {question}. "
-                    "Provide an answer based on the summary; if the question is not related to the summary, "
-                    "respond with 'the provided question doesn't belong to the video provided.'"
+                    f'''You are an AI summarizer for YouTube video transcripts. Your task is to create a concise summary that effectively captures the main points of the content. Follow these guidelines:
+
+                    Summarization:
+
+                    - Condense the provided transcript to 1.5 to 3 times shorter while retaining key information.
+                    - Use clear and simple language for easy understanding.
+
+                    User Questions:
+
+                    - If the user asks a question related to the summary, answer based on the summary content.
+                    - If the question is unrelated, respond: "The provided question doesn't belong to the video provided."
+
+                    Summary: {summary}. User question: {question}. 
+                    Provide an answer based on the summary; if the question is not related to the summary, 
+                    respond with 'the provided question doesn't belong to the video provided.'
+                    '''
                 )
+
             }]
         }]
     }
