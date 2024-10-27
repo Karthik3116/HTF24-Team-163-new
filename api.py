@@ -81,6 +81,7 @@ def summarize_text(text):
         "contents": [{
             "parts": [{
                 "text": (
+                    "Summarize the following content in about one-third of its original length. Focus on key points and simplify for clarity, keeping the explanation concise and easy to understand"
                     "The content has already been explained by someone in the video, and now I will explain it again "
                     "with more clarity and detail for a better understanding. The video is discussing the following key points:\n\n"
                     "Generate the output context length which is 1.5/3rd of the original text length"
