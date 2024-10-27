@@ -83,6 +83,7 @@ def summarize_text(text):
                 "text": (
                     "The content has already been explained by someone in the video, and now I will explain it again "
                     "with more clarity and detail for a better understanding. The video is discussing the following key points:\n\n"
+                    "Generate the output context length which is 1.5/3rd of the original text length"
                     f"Content to summarize: {text}\n\n"
                     "As I re-explain this, I'll break it down in a simple and clear way for you to grasp the main ideas easily.\n\n"
                     "Teacher: "
