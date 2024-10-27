@@ -90,6 +90,8 @@ button:hover {
   height: 400px; 
 }
 
+
+
 .chat-history {
   flex: 1;
   overflow-y: auto;
@@ -100,11 +102,11 @@ button:hover {
 }
 
 .chat-entry {
-  margin-bottom: 10px; /* Space between chat entries */
+  margin-bottom: 10px;
 }
 
 .chat-entry p {
-  margin: 0; /* Remove default margins */
+  margin: 0; 
 }
 
 form {
