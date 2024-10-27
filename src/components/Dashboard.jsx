@@ -15,7 +15,7 @@ function Dashboard({ videoChats }) {
       <h2>Available Video Chat Summarization Rooms</h2>
       {videoChats.map((chat, index) => (
         <div key={index} className="video-chat-card">
-          <p>Room Name: {chat.name}</p> {/* Display room name instead of video URL */}
+          <p>Room Name: {chat.name}</p> 
           <button onClick={() => navigate(`/chat/${index}`)}>Chat now</button>
         </div>
       ))}

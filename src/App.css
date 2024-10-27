@@ -1,42 +1,41 @@
 /* General App Styles */
 .App {
   text-align: center;
-  max-width: 900px; /* Limit the maximum width of the app */
-  margin: auto; /* Center the app in the viewport */
-  padding: 20px; /* Add padding around the app */
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
 }
 
-/* Form Styles */
+
 form {
   display: flex;
-  flex-direction: column; /* Stack input fields vertically */
-  margin: 20px 0; /* Add margin above and below the form */
+  flex-direction: column; 
+  margin: 20px 0; 
 }
 
 input {
   padding: 10px;
-  width: 100%; /* Make inputs full-width */
+  width: 100%; 
   font-size: 16px;
-  margin-bottom: 10px; /* Space between input fields */
-  border: 1px solid #ddd; /* Light border */
-  border-radius: 4px; /* Rounded corners */
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px; 
 }
 
 button {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  background-color: #007bff; /* Bootstrap-like button color */
-  color: white; /* White text */
-  border: none; /* Remove border */
-  border-radius: 4px; /* Rounded corners */
+  background-color: #007bff; 
+  color: white; 
+  border: none;
+  border-radius: 4px; 
 }
 
 button:hover {
-  background-color: #0056b3; /* Darker button color on hover */
+  background-color: #0056b3;
 }
 
-/* Dashboard Styles */
 .dashboard {
   margin: 20px 0;
   padding: 10px;
@@ -51,18 +50,16 @@ button:hover {
   background-color: #f5f5f5;
   margin-bottom: 10px;
   cursor: pointer;
-  width: 80%; /* Set width for better appearance */
+  width: 80%; 
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Room Creation Message Styles */
+
 .room-creation-message {
   color: #ff9800;
   font-weight: bold;
 }
-
-/* Chat Page Styles */
 .chat-page-container {
   display: flex;
   flex-direction: column;
@@ -71,8 +68,8 @@ button:hover {
 }
 
 .chat-ui {
-  width: 80%; /* Set a width for the chat UI */
-  max-width: 800px; /* Max width to prevent stretching */
+  width: 80%; 
+  max-width: 800px; 
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -90,13 +87,13 @@ button:hover {
 .chat-section {
   display: flex;
   flex-direction: column;
-  height: 400px; /* Ensure this matches your iframe height */
+  height: 400px; 
 }
 
 .chat-history {
-  flex: 1; /* Takes available space */
-  overflow-y: auto; /* Enable vertical scrolling */
-  max-height: 300px; /* Limit height for scrolling */
+  flex: 1;
+  overflow-y: auto;
+  max-height: 300px;
   padding: 10px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;

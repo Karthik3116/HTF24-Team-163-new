@@ -18,7 +18,7 @@ function ChatForEachApp({ currentChat }) {
       <div className="chat-box">
         <h3>Video Summary:</h3>
         <p>{currentChat.summary}</p>
-        {/* Add more chat functionality here */}
+        
       </div>
     </div>
   );

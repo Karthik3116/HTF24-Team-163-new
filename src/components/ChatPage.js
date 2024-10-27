@@ -13,16 +13,14 @@ function ChatPage({ videoChats }) {
     return <p>No History Found.</p>;
   }
 
-  // Function to extract video ID from YouTube URL
+  
   const getVideoId = (url) => {
     const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^&\n]{11})/;
     const matches = url.match(regex);
-    return matches ? matches[1] : null; // Return video ID or null if not found
+    return matches ? matches[1] : null; 
   };
 
-  const videoId = getVideoId(currentChat.url); // Extract video ID safely
-
-  // Handle sending a chat question
+  const videoId = getVideoId(currentChat.url); 
   const handleSendQuestion = async (e) => {
     e.preventDefault();
 
@@ -41,7 +39,7 @@ function ChatPage({ videoChats }) {
     const newChatEntry = { question: userQuestion, answer: result.answer };
 
     setChatHistory([...chatHistory, newChatEntry]);
-    setUserQuestion(''); // Clear input after sending the message
+    setUserQuestion('');
   };
 
   return (
